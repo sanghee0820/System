@@ -23,7 +23,7 @@ void writer()
         {2.2, "Test2", 2},
         {3.3, "Test3", 3}};
     
-    if ((fd = open("./Test", O_WRONLY | O_CREAT | O_TRUNC, 0644))== -1)
+    if ((fd = open("./Test", O_WRONLY | O_CREAT | O_TRUNC, S_IWUSR|S_IRUSR, 0644))== -1)
     {
         perror("failed open file.");
         exit(1);

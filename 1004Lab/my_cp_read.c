@@ -20,7 +20,7 @@ void reader()
 {
     int fd = 0;
     Contents structure;
-    if ((fd = open("Test", O_RDONLY) )== -1)
+    if ((fd = open("Test", O_RDONLY,S_IWUSR|S_IRUSR) )== -1)
     {
         perror("failed open file.");
         exit(1);
