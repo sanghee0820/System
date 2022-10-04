@@ -4,7 +4,6 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
-// Make ls with vi
 void do_ls (char[]);
 void dostat(char*);
 void show_file_info(char*, struct stat*);
