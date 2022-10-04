@@ -13,7 +13,7 @@ typedef struct Files
     char mode[11];
     int st_nlink;
     char *uid, *gid, *filename;;
-    long size, blksize;
+    long size;
     time_t time;
     struct Files *next;
 } Dir_Files;
@@ -191,7 +191,6 @@ Dir_Files *show_file_info(char *filename, struct stat *info_p)
     new->uid = uid_to_name(info_p->st_uid);
     new->gid = gid_to_name(info_p->st_gid);
     new->size = (long)info_p->st_size;
-    new->blksize = (long)info_p->st_blocks;
     new->time = info_p->st_mtime;
     new->filename = filename;
     new->next = NULL;
@@ -208,7 +207,7 @@ void printData(Dir_Files *root)
     for (Dir_Files *temp = root; temp; temp = temp->next)
     {
         count++;
-        size_sum += temp->blksize;
+        size_sum += temp->size;
         printf("%s", temp->mode);
         printf("%4d ", temp->st_nlink);
         printf("%-8s ", temp->uid);
@@ -217,7 +216,7 @@ void printData(Dir_Files *root)
         printf("%.12s ", 4 + ctime(&temp->time));
         printf("%s \n", temp->filename);
     }
-    printf("합계 %d, 총 %ld \n", count, size_sum / 2);
+    printf("합계 %d, 총 %ld Bytes \n", count, size_sum);
 }
 
 void mode_to_letters(int mode, char str[])
