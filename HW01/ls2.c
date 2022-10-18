@@ -12,6 +12,14 @@ char* uid_to_name(uid_t);
 char* gid_to_name(gid_t);
 
 int main(int argc, char* argv[]) {
+
+   int i = 0;
+   printf("%d\n", argc);
+
+   while(argv[i]){
+      printf("%s\n", argv[i++]);
+   }
+
    if(argc == 1) {
       do_ls(".");
    }
