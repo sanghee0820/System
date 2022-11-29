@@ -71,8 +71,6 @@ int Print_Cache();
 int main(int argc, char* args[]){
     FILE *fp = NULL;
     char adress_Hexa[9]; // Max Address = 2^32 bits = 16^8 bits
-    char data_Hexa[9];
-    char data_Bin[33];
     char command;
     int data;
     int count = 0;
